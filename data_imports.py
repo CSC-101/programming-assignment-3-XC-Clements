@@ -1,19 +1,14 @@
 import data
 import build_data
-import unittest
-
-#from data_imports import reduced_data_set
-from hw3 import population_total
-
 # These two values are defined to support testing below. The
 # data within these structures should not be modified. Doing
 # so will affect later tests.
 #
 # The data is defined here for visibility purposes in the context
 # of this course.
-full_data = build_data.get_data()
+full_data_set = build_data.get_data()
 
-reduced_data = [
+reduced_data_set = [
     data.CountyDemographics(
         {'Percent 65 and Older': 13.8,
          'Percent Under 18 Years': 25.2,
@@ -176,39 +171,3 @@ reduced_data = [
          'Population per Square Mile': 3.0},
         'WY')
     ]
-
-class TestCases(unittest.TestCase):
-    pass
-    # Part 1
-    # test population_total
-
-    def test_population_total_1(self):
-        self.assertEqual(population_total(reduced_data), 655813)
-    def test_population_total_2(self):
-        self.assertEqual(population_total(full_data), 318857056)
-    # Part 2
-    # test filter_by_state
-
-
-    # Part 3
-    # test population_by_education
-    # test population_by_ethnicity
-    # test population_below_poverty_level
-
-    # Part 4
-    # test percent_by_education
-    # test percent_by_ethnicity
-    # test percent_below_poverty_level
-
-    # Part 5
-    # test education_greater_than
-    # test education_less_than
-    # test ethnicity_greater_than
-    # test ethnicity_less_than
-    # test below_poverty_level_greater_than
-    # test below_poverty_level_less_than
-
-
-
-if __name__ == '__main__':
-    unittest.main()
