@@ -70,12 +70,66 @@ def percent_by_ethnicity(county_list:list[CountyDemographics], ethnicity:str) ->
 
 print(percent_by_ethnicity(data_imports.reduced_data_set, 'Asian Alone'))
 
-def percent_below_poverty_level(county_list:list[CountyDemographics], education_level:str) -> float:
+def percent_below_poverty_level(county_list:list[CountyDemographics]) -> float:
     total_pop = 0
     for n in county_list:
         total_pop += n.population['2014 Population']
     return (population_below_poverty_level(county_list) / total_pop) * 100
 
-print(percent_below_poverty_level(data_imports.reduced_data_set, 'High School or Higher'))
+print(percent_below_poverty_level(data_imports.reduced_data_set))
 
 #Part 5
+def education_greater_than(county_list:list[CountyDemographics], education_level:str, threshold:float) -> list[CountyDemographics]:
+    output_list = []
+    for county in county_list:
+        if county.education[education_level] > threshold:
+            output_list.append(county)
+    return output_list
+
+print(education_greater_than(data_imports.reduced_data_set, 'High School or Higher', 90))
+
+def education_less_than(county_list:list[CountyDemographics], education_level:str, threshold:float) -> list[CountyDemographics]:
+    output_list = []
+    for county in county_list:
+        if county.education[education_level] < threshold:
+            output_list.append(county)
+    return output_list
+
+print(education_less_than(data_imports.reduced_data_set, 'High School or Higher', 90))
+
+def ethnicity_greater_than(county_list:list[CountyDemographics], ethnicity:str, threshold:float) -> list[CountyDemographics]:
+    output_list = []
+    for county in county_list:
+        if county.ethnicities[ethnicity] > threshold:
+            output_list.append(county)
+    return output_list
+
+print(ethnicity_greater_than(data_imports.reduced_data_set, 'Asian Alone', 10))
+
+
+def ethnicity_less_than(county_list:list[CountyDemographics], ethnicity:str, threshold:float) -> list[CountyDemographics]:
+    output_list = []
+    for county in county_list:
+        if county.ethnicities[ethnicity] < threshold:
+            output_list.append(county)
+    return output_list
+
+print(ethnicity_less_than(data_imports.reduced_data_set, 'Asian Alone', 10))
+
+def below_poverty_level_greater_than(county_list:list[CountyDemographics], threshold:float) -> list[CountyDemographics]:
+    output_list = []
+    for county in county_list:
+        if county.income['Persons Below Poverty Level'] > threshold:
+            output_list.append(county)
+    return output_list
+
+print(below_poverty_level_greater_than(data_imports.reduced_data_set, 10))
+
+def below_poverty_level_less_than(county_list:list[CountyDemographics], threshold:float) -> list[CountyDemographics]:
+    output_list = []
+    for county in county_list:
+        if county.income['Persons Below Poverty Level'] < threshold:
+            output_list.append(county)
+    return output_list
+
+print(below_poverty_level_less_than(data_imports.reduced_data_set, 10))
