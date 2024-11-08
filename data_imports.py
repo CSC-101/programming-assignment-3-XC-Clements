@@ -1,19 +1,14 @@
 import data
 import build_data
-import unittest
-
-#from data_imports import reduced_data_set
-from hw3 import population_total, filter_by_state
-from data import CountyDemographics
 # These two values are defined to support testing below. The
 # data within these structures should not be modified. Doing
 # so will affect later tests.
 #
 # The data is defined here for visibility purposes in the context
 # of this course.
-full_data = build_data.get_data()
+full_data_set = build_data.get_data()
 
-reduced_data = [
+reduced_data_set = [
     data.CountyDemographics(
         {'Percent 65 and Older': 13.8,
          'Percent Under 18 Years': 25.2,
@@ -176,43 +171,3 @@ reduced_data = [
          'Population per Square Mile': 3.0},
         'WY')
     ]
-
-class TestCases(unittest.TestCase):
-    pass
-    # Part 1
-    # test population_total
-
-    def test_population_total_1(self):
-        self.assertEqual(population_total(reduced_data), 655813)
-    def test_population_total_2(self):
-        self.assertEqual(population_total(full_data), 318857056)
-    # Part 2
-    # test filter_by_state
-    def test_filter_by_state_1(self):
-        expected_value = [CountyDemographics({'Percent 65 and Older': 17.5, 'Percent Under 18 Years': 18.1, 'Percent Under 5 Years': 4.8}, "San Luis Obispo County", {"Bachelor's Degree or Higher": 31.5, 'High School or Higher': 89.6}, {'American Indian and Alaska Native Alone': 1.4, 'Asian Alone': 3.8, 'Black Alone': 2.2, 'Hispanic or Latino': 22.0, 'Native Hawaiian and Other Pacific Islander Alone': 0.2, 'Two or More Races': 3.4, 'White Alone': 89.0, 'White Alone, not Hispanic or Latino': 69.5}, {'Per Capita Income': 29954, 'Persons Below Poverty Level': 14.3, 'Median Household Income': 58697}, {'2010 Population': 269637, '2014 Population': 279083, 'Population Percent Change': 3.5, 'Population per Square Mile': 81.7}, "CA"), CountyDemographics({'Percent 65 and Older': 11.5, 'Percent Under 18 Years': 21.7, 'Percent Under 5 Years': 5.8}, "Yolo County", {"Bachelor's Degree or Higher": 37.9, 'High School or Higher': 84.3}, {'American Indian and Alaska Native Alone': 1.8, 'Asian Alone': 13.8, 'Black Alone': 3.0, 'Hispanic or Latino': 31.5, 'Native Hawaiian and Other Pacific Islander Alone': 0.6, 'Two or More Races': 5.0, 'White Alone': 75.9, 'White Alone, not Hispanic or Latino': 48.3}, {'Per Capita Income': 27730, 'Persons Below Poverty Level': 19.1, 'Median Household Income': 55918}, {'2010 Population': 200849, '2014 Population': 207590, 'Population Percent Change': 3.4, 'Population per Square Mile': 197.9}, "CA")]
-        print(type(filter_by_state(reduced_data,"CA")))
-        print(type([CountyDemographics({'Percent 65 and Older': 17.5, 'Percent Under 18 Years': 18.1, 'Percent Under 5 Years': 4.8}, "San Luis Obispo County", {"Bachelor's Degree or Higher": 31.5, 'High School or Higher': 89.6}, {'American Indian and Alaska Native Alone': 1.4, 'Asian Alone': 3.8, 'Black Alone': 2.2, 'Hispanic or Latino': 22.0, 'Native Hawaiian and Other Pacific Islander Alone': 0.2, 'Two or More Races': 3.4, 'White Alone': 89.0, 'White Alone, not Hispanic or Latino': 69.5}, {'Per Capita Income': 29954, 'Persons Below Poverty Level': 14.3, 'Median Household Income': 58697}, {'2010 Population': 269637, '2014 Population': 279083, 'Population Percent Change': 3.5, 'Population per Square Mile': 81.7}, "CA"), CountyDemographics({'Percent 65 and Older': 11.5, 'Percent Under 18 Years': 21.7, 'Percent Under 5 Years': 5.8}, "Yolo County", {"Bachelor's Degree or Higher": 37.9, 'High School or Higher': 84.3}, {'American Indian and Alaska Native Alone': 1.8, 'Asian Alone': 13.8, 'Black Alone': 3.0, 'Hispanic or Latino': 31.5, 'Native Hawaiian and Other Pacific Islander Alone': 0.6, 'Two or More Races': 5.0, 'White Alone': 75.9, 'White Alone, not Hispanic or Latino': 48.3}, {'Per Capita Income': 27730, 'Persons Below Poverty Level': 19.1, 'Median Household Income': 55918}, {'2010 Population': 200849, '2014 Population': 207590, 'Population Percent Change': 3.4, 'Population per Square Mile': 197.9}, "CA")]))
-        self.assertEqual(filter_by_state(reduced_data, "CA"), expected_value)
-
-    # Part 3
-    # test population_by_education
-    # test population_by_ethnicity
-    # test population_below_poverty_level
-
-    # Part 4
-    # test percent_by_education
-    # test percent_by_ethnicity
-    # test percent_below_poverty_level
-
-    # Part 5
-    # test education_greater_than
-    # test education_less_than
-    # test ethnicity_greater_than
-    # test ethnicity_less_than
-    # test below_poverty_level_greater_than
-    # test below_poverty_level_less_than
-
-
-
-if __name__ == '__main__':
-    unittest.main()
